@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Build Skills From Real Work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Wittgenstein:ital,wght@0,400;0,500;0,600;1,400&family=Ysabeau+Office:wght@400;500;600&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0C0F;--ink:#F1EDE4;--ink2:#CAC4B7;--dim:#7E7A71;--card:#12141A;--line:#2A2E36;--ghost:#3C4048;
+  --ac:#E8654A;--acr:232,101,74;
+  --disp:'Wittgenstein',Georgia,'Times New Roman',serif;
+  --sans:'Ysabeau Office','Helvetica Neue',Arial,sans-serif;
+  --mono:'DM Mono',Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);color:var(--ink);overflow:hidden;-webkit-font-smoothing:antialiased}
+#bg{position:fixed;inset:0;background:var(--bg)}
+#bg::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22640%22 height=%22640%22 viewBox=%220 0 640 640%22 fill=%22none%22 stroke=%22%23F1EDE4%22 stroke-width=%221%22%3E%3Cpath d=%22M229.9,210.0C230.5,215.2 227.1,221.7 224.3,226.5C221.5,231.3 217.6,236.5 213.0,238.9C208.5,241.3 202.1,240.3 197.0,240.8C192.0,241.3 188.3,241.5 182.7,241.8C177.2,242.2 168.2,245.6 163.6,243.1C159.1,240.5 156.4,232.2 155.4,226.7C154.5,221.1 157.2,215.2 157.9,210.0C158.5,204.8 157.7,199.8 159.4,195.3C161.1,190.7 164.6,186.7 168.2,182.6C171.8,178.5 175.9,172.4 181.0,170.6C186.1,168.8 194.2,168.9 198.8,171.6C203.3,174.3 204.9,182.8 208.5,186.8C212.1,190.7 216.7,191.5 220.3,195.4C223.8,199.3 229.2,204.8 229.9,210.0Z%22/%3E%3Cpath d=%22M258.7,210.0C259.8,218.9 253.8,230.1 249.0,238.4C244.2,246.7 237.5,255.7 229.7,259.8C221.9,263.9 210.8,262.2 202.1,263.0C193.4,263.9 187.1,264.2 177.5,264.8C167.9,265.5 152.4,271.3 144.6,266.9C136.8,262.6 132.1,248.2 130.4,238.7C128.8,229.2 133.5,219.0 134.7,210.0C135.8,201.0 134.3,192.5 137.3,184.6C140.2,176.8 146.2,169.9 152.4,162.8C158.6,155.7 165.7,145.3 174.5,142.1C183.3,139.0 197.2,139.3 205.1,143.9C213.0,148.6 215.7,163.2 221.9,170.0C228.1,176.8 236.0,178.2 242.2,184.9C248.3,191.6 257.5,201.1 258.7,210.0Z%22/%3E%3Cpath d=%22M287.5,210.0C289.1,222.7 280.6,238.6 273.8,250.3C266.9,262.1 257.4,274.8 246.3,280.6C235.2,286.5 219.5,284.0 207.2,285.2C194.8,286.4 185.8,286.9 172.2,287.8C158.6,288.8 136.7,297.0 125.6,290.8C114.4,284.6 107.8,264.2 105.5,250.7C103.1,237.2 109.8,222.8 111.5,210.0C113.1,197.2 111.0,185.1 115.2,174.0C119.4,162.8 127.8,153.1 136.6,143.0C145.4,133.0 155.5,118.1 168.0,113.7C180.5,109.2 200.2,109.7 211.4,116.2C222.6,122.8 226.5,143.5 235.3,153.2C244.1,162.9 255.3,164.9 264.0,174.3C272.7,183.8 285.8,197.3 287.5,210.0Z%22/%3E%3Cpath d=%22M316.2,210.0C318.3,226.4 307.4,247.0 298.5,262.3C289.6,277.5 277.4,294.0 263.0,301.5C248.6,309.1 228.2,305.9 212.2,307.5C196.2,309.0 184.6,309.6 167.0,310.8C149.4,312.0 121.0,322.7 106.5,314.7C92.1,306.6 83.5,280.2 80.5,262.7C77.4,245.3 86.1,226.6 88.2,210.0C90.3,193.4 87.7,177.8 93.1,163.3C98.5,148.9 109.4,136.3 120.8,123.3C132.2,110.2 145.4,91.0 161.5,85.2C177.7,79.4 203.2,80.0 217.7,88.5C232.3,97.1 237.3,123.9 248.7,136.4C260.1,148.9 274.7,151.5 285.9,163.8C297.2,176.1 314.1,193.6 316.2,210.0Z%22/%3E%3Cpath d=%22M345.0,210.0C347.6,230.1 334.2,255.4 323.3,274.2C312.4,292.9 297.3,313.1 279.6,322.4C262.0,331.6 237.0,327.8 217.3,329.7C197.7,331.6 183.4,332.4 161.7,333.8C140.1,335.3 105.2,348.4 87.5,338.5C69.8,328.7 59.3,296.2 55.5,274.8C51.8,253.3 62.5,230.3 65.0,210.0C67.6,189.7 64.3,170.4 71.0,152.7C77.7,134.9 91.0,119.5 105.1,103.5C119.1,87.5 135.2,63.8 155.0,56.7C174.8,49.6 206.2,50.4 224.0,60.8C241.9,71.3 248.1,104.2 262.1,119.6C276.0,135.0 294.0,138.2 307.8,153.3C321.6,168.3 342.5,189.9 345.0,210.0Z%22/%3E%3Cpath d=%22M373.8,210.0C376.9,233.9 360.9,263.9 348.0,286.1C335.1,308.3 317.2,332.3 296.3,343.3C275.3,354.2 245.7,349.7 222.4,351.9C199.1,354.2 182.1,355.1 156.5,356.8C130.8,358.6 89.5,374.1 68.5,362.4C47.5,350.7 35.0,312.2 30.5,286.8C26.1,261.4 38.8,234.1 41.8,210.0C44.9,185.9 41.0,163.1 48.9,142.0C56.8,121.0 72.7,102.7 89.3,83.7C105.9,64.7 125.0,36.7 148.5,28.3C172.0,19.8 209.2,20.7 230.4,33.1C251.5,45.6 258.9,84.6 275.5,102.8C292.0,121.1 313.3,124.9 329.7,142.7C346.1,160.6 370.8,186.1 373.8,210.0Z%22/%3E%3Cpath d=%22M506.2,470.0C505.7,475.3 504.5,481.4 501.3,485.1C498.2,488.7 491.5,489.3 487.5,491.9C483.4,494.5 481.5,497.6 477.0,500.7C472.5,503.8 465.5,511.3 460.7,510.7C455.9,510.2 450.8,502.3 447.9,497.7C445.0,493.0 444.9,487.5 443.3,482.9C441.7,478.2 438.8,474.5 438.2,470.0C437.7,465.5 438.9,460.8 440.1,455.6C441.2,450.4 441.4,442.3 445.1,438.7C448.7,435.2 456.7,433.4 461.9,434.4C467.0,435.3 471.1,442.8 475.8,444.5C480.6,446.1 485.5,443.0 490.3,444.5C495.1,446.0 501.9,449.1 504.6,453.3C507.2,457.6 506.8,464.7 506.2,470.0Z%22/%3E%3Cpath d=%22M533.9,470.0C533.0,479.3 530.8,490.2 525.3,496.6C519.8,503.1 508.0,504.1 500.8,508.7C493.7,513.3 490.2,518.6 482.4,524.2C474.5,529.7 462.1,542.8 453.6,541.9C445.0,541.0 436.2,527.0 431.1,518.8C426.0,510.6 425.8,500.8 422.9,492.7C420.1,484.5 414.9,478.0 413.9,470.0C413.0,462.0 415.2,453.8 417.2,444.6C419.2,435.4 419.6,421.1 426.0,414.8C432.4,408.6 446.6,405.5 455.7,407.2C464.7,408.8 471.9,421.9 480.3,424.9C488.7,427.9 497.4,422.4 505.9,425.0C514.3,427.6 526.4,433.1 531.0,440.6C535.7,448.1 534.9,460.7 533.9,470.0Z%22/%3E%3Cpath d=%22M561.6,470.0C560.3,483.4 557.2,498.9 549.3,508.2C541.4,517.4 524.5,518.9 514.2,525.4C503.9,532.0 499.0,539.7 487.7,547.6C476.4,555.6 458.7,574.3 446.5,573.1C434.2,571.8 421.5,551.7 414.2,540.0C406.9,528.2 406.6,514.2 402.5,502.5C398.4,490.8 391.0,481.5 389.6,470.0C388.3,458.5 391.4,446.7 394.3,433.6C397.2,420.4 397.8,399.9 407.0,390.9C416.1,382.0 436.5,377.5 449.4,379.9C462.4,382.3 472.8,401.1 484.7,405.4C496.7,409.6 509.3,401.8 521.4,405.5C533.6,409.3 550.8,417.1 557.5,427.9C564.2,438.6 563.0,456.6 561.6,470.0Z%22/%3E%3Cpath d=%22M589.3,470.0C587.5,487.4 583.6,507.7 573.3,519.7C563.0,531.8 540.9,533.6 527.6,542.2C514.2,550.7 507.8,560.8 493.1,571.1C478.4,581.4 455.3,605.9 439.4,604.2C423.4,602.6 406.9,576.5 397.3,561.1C387.8,545.8 387.4,527.5 382.1,512.3C376.8,497.1 367.1,485.0 365.3,470.0C363.5,455.0 367.7,439.7 371.4,422.5C375.2,405.4 375.9,378.7 387.9,367.1C399.9,355.4 426.3,349.6 443.2,352.7C460.1,355.8 473.6,380.3 489.2,385.8C504.8,391.4 521.2,381.1 537.0,386.0C552.8,390.9 575.2,401.1 583.9,415.1C592.6,429.1 591.1,452.6 589.3,470.0Z%22/%3E%3C/svg%3E");background-size:640px 640px;background-position:-120px -80px;opacity:.05}
+#light{position:fixed;inset:0;background:radial-gradient(ellipse 52% 78% at 100% 44%,rgba(255,236,214,.085),transparent 62%)}
+#glow{position:fixed;inset:0;background:radial-gradient(ellipse 44% 50% at 57% 57%,rgba(var(--acr),.10),transparent 70%);transition:background .7s ease}
+#vig{position:fixed;inset:0;background:radial-gradient(ellipse 82% 82% at 50% 50%,transparent 52%,rgba(0,0,0,.6) 100%)}
+
+#stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;margin:-360px 0 0 -640px;transform-origin:50% 50%;background:transparent}
+
+/* left rail: survey benchmarks */
+#nav{position:absolute;left:56px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:15px;z-index:5}
+.nv{display:flex;align-items:center;gap:12px;cursor:pointer;font:500 13.5px/1 var(--sans);letter-spacing:.03em;color:var(--dim);transition:color .4s ease;white-space:nowrap}
+.nv svg{width:14px;height:14px;flex:none;overflow:visible}
+.nv .bm{fill:none;stroke:var(--ghost);stroke-width:1.4;stroke-linejoin:round;transition:all .4s ease}
+.nv .bd{fill:var(--ghost);transition:all .4s ease}
+.nv.done{color:#8F8A80}
+.nv.done .bm{fill:var(--cac);stroke:var(--cac);opacity:.62}
+.nv.done .bd{fill:var(--bg)}
+.nv.cur{color:var(--ink)}
+.nv.cur .bm{fill:var(--ac);stroke:var(--ac);filter:drop-shadow(0 0 6px rgba(var(--acr),.85))}
+.nv.cur .bd{fill:var(--bg)}
+
+/* counter */
+#ctr{position:absolute;right:46px;top:44px;font:400 13px/1 var(--mono);letter-spacing:.14em;color:var(--dim);z-index:5}
+#ctr b{font-weight:400;color:var(--ink)}
+#steps{position:absolute;right:46px;top:68px;display:flex;gap:5px;z-index:5}
+#steps i{display:block;width:5px;height:5px;border-radius:50%;background:#2E323A}
+#steps i.on{background:var(--ac)}
+
+/* slides */
+.sl{position:absolute;left:250px;top:84px;width:980px;height:600px;display:none;flex-direction:column;opacity:0;transition:opacity .45s ease}
+.sl.on{display:flex}
+.sl.vis{opacity:1}
+.head{flex:none}
+.kk{display:flex;align-items:center;gap:10px;font:500 12px/1 var(--mono);letter-spacing:.18em;color:var(--ac);text-transform:uppercase;white-space:nowrap}
+.kk svg{width:11px;height:11px;overflow:visible}
+.kk .bm{fill:none;stroke:var(--ac);stroke-width:1.5;stroke-linejoin:round}
+.kk .bd{fill:var(--ac)}
+.rule{width:38px;height:8px;margin:14px 0 13px;border-top:2.5px solid var(--ac);border-bottom:1px solid rgba(var(--acr),.55)}
+h1{font:500 44px/1.12 var(--disp);letter-spacing:-.004em;color:var(--ink);max-width:930px}
+h1.big{font-size:72px;line-height:1.05}
+.chain{display:flex;align-items:center;gap:26px;margin-top:-60px}
+.chain span{font:500 30px/1 var(--disp);color:var(--ink2);letter-spacing:-.005em}
+.chain span.ac{color:var(--ac)}
+.chain i{display:block;width:34px;height:1.5px;background:var(--ac);position:relative;opacity:.8}
+.chain i::after{content:"";position:absolute;right:-1px;top:-4.5px;width:8px;height:8px;border-top:1.5px solid var(--ac);border-right:1.5px solid var(--ac);transform:rotate(45deg)}
+.sub{margin-top:16px;font:italic 400 24px/1.4 var(--disp);color:var(--ink2);max-width:860px}
+.body{flex:1;display:flex;align-items:center;justify-content:center;min-height:0}
+.body.top{align-items:flex-start;padding-top:34px}
+.fig{display:block;overflow:visible}
+
+/* figure grammar */
+.fig text{font-family:var(--sans);fill:var(--ink);font-size:17px;font-weight:500}
+.fig .t{font-size:18px}
+.fig .t2{font-size:16px;font-weight:400;fill:var(--ink2)}
+.fig .t3{font-size:14.5px;font-weight:400;fill:var(--ink2)}
+.fig .m{font-family:var(--mono);font-size:11px;font-weight:500;fill:var(--dim);letter-spacing:.14em}
+.fig .ma{font-family:var(--mono);font-size:11px;font-weight:500;fill:var(--ac);letter-spacing:.14em}
+.fig .s{font-family:var(--mono);font-size:11.5px;font-weight:400;fill:var(--dim);letter-spacing:.02em}
+.fig .s2{font-family:var(--mono);font-size:12.5px;font-weight:400;fill:var(--ink2);letter-spacing:.02em}
+.fig .dm{fill:var(--dim)}
+.fig .i2{fill:var(--ink2)}
+.fig .it{font-style:italic;font-weight:400;font-size:16px;fill:var(--ink)}
+.fig .cd{fill:var(--card);stroke:var(--line);stroke-width:1.4}
+.fig .fc{fill:rgba(var(--acr),.09);stroke:var(--ac);stroke-width:1.6}
+.fig .gh{fill:none;stroke:var(--ghost);stroke-width:1.4;stroke-dasharray:5 5}
+.fig .ln{fill:none;stroke:#4A4E57;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fig .la{fill:none;stroke:var(--ac);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fig .ld{stroke-dasharray:6 6}
+.fig .wall{fill:none;stroke:var(--ghost);stroke-width:1.6;stroke-dasharray:6 7}
+.fig .pill{fill:rgba(var(--acr),.14);stroke:rgba(var(--acr),.62);stroke-width:1.2}
+.fig .pp2{fill:var(--card);stroke:var(--line);stroke-width:1.2}
+.fig .sl2{fill:none;stroke:var(--ac);stroke-width:2.4;stroke-linecap:round}
+.fig .per{fill:none;stroke:var(--dim);stroke-width:1.7;stroke-linecap:round}
+.fig .per2{fill:none;stroke:var(--ink2);stroke-width:1.7;stroke-linecap:round}
+.fig .perd{fill:none;stroke:#3F434B;stroke-width:1.7;stroke-linecap:round}
+.fig .slot{fill:var(--ac)}
+.fig .sk{fill:none;stroke:var(--dim);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.fig .ska{fill:none;stroke:var(--ac);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.fig .ck{fill:none;stroke:var(--ink2);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fig .cx{fill:none;stroke:var(--ac);stroke-width:2.2;stroke-linecap:round}
+.fig .glow{filter:drop-shadow(0 0 14px rgba(var(--acr),.42))}
+
+/* spotlight */
+.sl.lit .sg{opacity:.2;transition:opacity .4s ease}
+.sl.lit .sg.curr{opacity:1}
+.sg.curr .cd{fill:rgba(var(--acr),.10);stroke:var(--ac);stroke-width:1.8;filter:drop-shadow(0 0 14px rgba(var(--acr),.42))}
+.sg.curr .gh{stroke:var(--ac)}
+.sg.curr .ln{stroke:var(--ac)}
+.sg.curr .ln.ar{marker-end:url(#mAc)}
+.sg.curr .per{stroke:var(--ink2)}
+.sg.curr text{fill:var(--ink)}
+.sg.curr .s,.sg.curr .m,.sg.curr .dm,.sg.curr .t2,.sg.curr .t3{fill:var(--ink2)}
+.sg.curr .ma{fill:var(--ac)}
+
+/* prompt panels */
+.ppw{position:relative;width:100%;max-width:960px}
+.ppw.n{max-width:920px}
+.tag{position:absolute;top:-9px;left:30px;z-index:3;padding:0 10px;background:var(--card);font:500 11.5px/18px var(--mono);letter-spacing:.18em;color:var(--ac);text-transform:uppercase}
+.pp{position:relative;background:var(--card);border:1.3px solid var(--line);border-radius:12px;padding:36px 44px 34px;font:400 20px/1.66 var(--mono);color:var(--ink2)}
+.pp.big{font-size:21.5px;line-height:1.66}
+.pp.mid{font-size:20px}
+.pp.sm{font-size:19px;line-height:1.64;padding:34px 42px 30px}
+.pp p{margin-bottom:20px}
+.pp p:last-child{margin-bottom:0}
+.pp .li{position:relative;padding-left:30px;margin:11px 0}
+.pp .li::before{content:"";position:absolute;left:5px;top:.66em;width:8px;height:8px;border-radius:50%;background:var(--ac)}
+.hl{background:rgba(var(--acr),.17);color:var(--ink);border-bottom:1.5px solid var(--ac);padding:1px 5px;border-radius:4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.var{background:rgba(var(--acr),.12);color:var(--ac);border:1px solid rgba(var(--acr),.55);padding:0 6px;border-radius:4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.crn{position:absolute;right:0;top:0;width:52px;height:52px;pointer-events:none;overflow:visible}
+.crn path{fill:none;stroke:var(--ac);stroke-width:1;opacity:.42}
+
+/* recap */
+.rc{width:100%;max-width:840px;display:flex;flex-direction:column;gap:30px}
+.rr{display:flex;align-items:baseline;gap:28px;opacity:.13;transition:opacity .4s ease}
+.rr.done{opacity:.34}
+.rr.cur{opacity:1}
+.rr i{font:500 13px var(--mono);color:var(--ac);letter-spacing:.14em;flex:none;width:36px;font-style:normal}
+.rr b{font:500 31px/1.22 var(--disp);color:var(--ink)}
+</style>
+</head>
+<body>
+<div id="bg"></div><div id="light"></div><div id="glow"></div><div id="vig"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="mAc" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2,1.5 L10.5,6 L2,10.5" fill="none" style="stroke:var(--ac)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="mDm" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M2,1.5 L10.5,6 L2,10.5" fill="none" style="stroke:#4A4E57" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <symbol id="bench" viewBox="0 0 14 14"><path class="bm" d="M7,1.5 L13,12.5 L1,12.5 Z"/><circle class="bd" cx="7" cy="9.2" r="1.7"/></symbol>
+  </defs>
+</svg>
+
+<div id="stage">
+  <nav id="nav"></nav>
+  <div id="ctr"></div>
+  <div id="steps"></div>
+
+<!-- ===== 0 · The habit ===== -->
+<section class="sl" data-ch="0">
+  <div class="head">
+    <div class="kk"><svg><use href="#bench"/></svg>Before we start</div>
+    <div class="rule"></div>
+    <h1 class="big">How most skills get built</h1>
+  </div>
+  <div class="body">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:26px;margin-top:-60px">
+      <div class="chain" style="margin-top:0">
+        <span>Create skill</span><i></i><span>Answer questions</span><i></i><span>Save</span><i></i><span class="ac">Average work</span>
+      </div>
+      <div class="sub" style="margin-top:0;text-align:center">every week, for everyone you share it with</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 1 · Only what you remembered ===== -->
+<section class="sl" data-ch="0">
+  <div class="head">
+    <div class="kk"><svg><use href="#bench"/></svg>What that skill learned from</div>
+    <div class="rule"></div>
+    <h1>It only knows what you remembered to say.</h1>
+  </div>
+  <div class="body top">
+    <svg class="fig" viewBox="0 0 940 330" width="940" height="330">
+      <rect class="cd" x="0" y="40" width="300" height="250" rx="12"/>
+      <text class="m" x="24" y="72">WHAT YOU TYPED</text>
+      <text class="t" x="24" y="112">A sentence or two</text>
+      <text class="t2" x="24" y="140">about the task</text>
+      <text class="t2" x="24" y="168">+ a few answers</text>
+      <line class="ln" x1="306" y1="165" x2="366" y2="165" marker-end="url(#mDm)"/>
+      <rect class="gh" x="372" y="0" width="300" height="330" rx="12"/>
+      <text class="m" x="396" y="32">WHAT MAKES YOUR WORK GOOD</text>
+      <text class="i2" x="396" y="84">What goes on page one</text>
+      <text class="i2" x="396" y="126">Why you push back on</text>
+      <text class="i2" x="396" y="150">one vendor, not another</text>
+      <text class="i2" x="396" y="192">What your best deck</text>
+      <text class="i2" x="396" y="216">looks like</text>
+      <text class="s" x="396" y="300">never said out loud</text>
+      <line class="la" x1="678" y1="165" x2="738" y2="165" marker-end="url(#mAc)"/>
+      <rect class="fc glow" x="744" y="95" width="196" height="140" rx="12"/>
+      <text class="ma" x="842" y="138" text-anchor="middle">THE RESULT</text>
+      <text x="842" y="174" text-anchor="middle">Sounds like</text>
+      <text x="842" y="200" text-anchor="middle">everyone else</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== 2 · Everything is moving to skills ===== -->
+<section class="sl" data-ch="0">
+  <div class="head">
+    <div class="kk"><svg><use href="#bench"/></svg>Why now</div>
+    <div class="rule"></div>
+    <h1>Every major AI now saves your work as skills.</h1>
+  </div>
+  <div class="body top">
+    <svg class="fig" viewBox="0 0 940 250" width="940" height="250">
+      <rect class="cd" x="0" y="20" width="220" height="200" rx="12"/>
+      <text class="m" x="24" y="54">CLAUDE</text>
+      <text class="t" x="24" y="100">Runs on skills</text>
+      <text class="t3" x="24" y="128">today</text>
+      <rect class="cd" x="240" y="20" width="220" height="200" rx="12"/>
+      <text class="m" x="264" y="54">MICROSOFT COPILOT</text>
+      <text class="t" x="264" y="100">Runs on skills</text>
+      <text class="t3" x="264" y="128">today</text>
+      <rect class="fc" x="480" y="20" width="220" height="200" rx="12"/>
+      <text class="ma" x="504" y="54">CHATGPT</text>
+      <text class="t" x="504" y="100">Custom GPTs</text>
+      <text class="t" x="504" y="126">move to skills</text>
+      <text class="s2" x="504" y="190">retiring in December</text>
+      <rect class="fc" x="720" y="20" width="220" height="200" rx="12"/>
+      <text class="ma" x="744" y="54">GEMINI</text>
+      <text class="t" x="744" y="100">Gems turn</text>
+      <text class="t" x="744" y="126">into skills</text>
+      <text class="s2" x="744" y="190">starting November 17</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== 3 · Two jobs ===== -->
+<section class="sl" data-ch="1" data-kind="spot">
+  <div class="head">
+    <div class="kk"><svg><use href="#bench"/></svg>Question one · what is the skill for?</div>
+    <div class="rule"></div>
+    <h1>Doing the work, or checking it.</h1>
+  </div>
+  <div class="body top">
+    <svg class="fig" viewBox="0 0 940 340" width="940" height="340">
+      <g class="sg" data-sp="1">
+        <rect class="cd" x="0" y="0" width="440" height="300" rx="12"/>
+        <text class="ma" x="28" y="38">DOING SKILLS</text>
+        <text class="t" x="28" y="84">Write the proposal</text>
+        <text class="t" x="28" y="116">Build the monthly report</text>
+        <text class="t" x="28" y="148">Draft your email replies</text>
+        <text class="t3" x="28" y="208">Some are about how it looks · your brand deck</text>
+        <text class="t3" x="28" y="236">Some are about how it sounds · your voice</text>
+        <text class="s" x="28" y="280">what almost everyone builds</text>
+      </g>
+      <g class="sg" data-sp="2">
+        <rect class="cd" x="500" y="0" width="440" height="300" rx="12"/>
+        <text class="ma" x="528" y="38">CHECKING SKILLS</text>
+        <text class="t" x="528" y="84">Review the work before it goes out</text>
+        <text class="t2" x="528" y="116">against what good looks like</text>
+        <text class="t3" x="528" y="176">The AI’s draft — or a teammate’s</text>
+        <text class="t3" x="528" y="208">Flags every slide that breaks your brand</text>
+        <text class="t3" x="528" y="236">Points out where an email isn’t you</text>
+        <text class="s" x="528" y="280">the kind almost nobody builds</text>
+      </g>
+      <text class="s2" x="470" y="332" text-anchor="middle">The same know-how can power both.</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== 4 · Where the know-how lives ===== -->
+<section class="sl" data-ch="1" data-kind="spot">
+  <div class="head">
+    <div class="kk"><svg><use href="#bench"/></svg>Question two</div>
+    <div class="rule"></div>
+    <h1>Where does the know-how live right now?</h1>
+  </div>
+  <div class="body top">
+    <svg class="fig" viewBox="0 0 940 330" width="940" height="330">
+      <g class="sg" data-sp="1">
+        <rect class="cd" x="0" y="0" width="440" height="140" rx="12"/>
+        <text class="m" x="26" y="36">IN FINISHED WORK</text>
+        <text class="t" x="26" y="80">Reverse engineer it</text>
+        <text class="t3" x="26" y="112">you already have good examples</text>
+      </g>
+      <g class="sg" data-sp="2">
+        <rect class="cd" x="500" y="0" width="440" height="140" rx="12"/>
+        <text class="m" x="526" y="36">IN THE STEPS YOU TAKE</text>
+        <text class="t" x="526" y="80">Do it once, then save it</text>
+        <text class="t3" x="526" y="112">mostly process, a little judgment</text>
+      </g>
+      <g class="sg" data-sp="3">
+        <rect class="cd" x="0" y="180" width="440" height="140" rx="12"/>
+        <text class="m" x="26" y="216">IN YOUR HEAD</text>
+        <text class="t" x="26" y="260">Let the AI interview you</text>
+        <text class="t3" x="26" y="292">almost all judgment</text>
+      </g>
+      <g class="sg" data-sp="4">
+        <rect class="cd" x="500" y="180" width="440" height="140" rx="12"/>
+        <text class="m" x="526" y="216">IN SOMETHING YOU BUILT</text>
+        <text class="t" x="526" y="260">Convert it</text>
+        <text class="t3" x="526" y="292">a custom GPT, project, Gem, or SOP</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== 5 · Three things to copy ===== -->
+<section class="sl" data-ch="2" data-kind="spot">
+  <div class="head">
+    <div class="kk"><svg><use href="#bench"/></svg>Finished work · show it, don’t explain it</div>
+    <div class="rule"></div>
+    <h1>Reverse engineer it so it can copy you.</h1>
+  </div>
+  <div class="body top">
+    <svg class="fig" viewBox="0 0 940 330" width="940" height="330">
+      <g class="sg" data-sp="1">
+        <rect class="cd" x="0" y="0" width="290" height="310" rx="12"/>
+        <text class="ma" x="24" y="36">THE LOOK</text>
+        <text class="t" x="24" y="78">Your best deck</text>
+        <text class="t3" x="24" y="120">fonts · colors</text>
+        <text class="t3" x="24" y="146">spacing · layout</text>
+        <rect class="pill" x="24" y="232" width="190" height="40" rx="20"/>
+        <text class="it" x="119" y="258" text-anchor="middle">“pixel for pixel”</text>
+      </g>
+      <g class="sg" data-sp="2">
+        <rect class="cd" x="325" y="0" width="290" height="310" rx="12"/>
+        <text class="ma" x="349" y="36">YOUR EMAIL VOICE</text>
+        <text class="t" x="349" y="78">A few hundred sent emails</text>
+        <text class="t3" x="349" y="120">1 · the kinds you send</text>
+        <text class="t3" x="349" y="148">2 · the fingerprint of each kind</text>
+        <text class="t3" x="349" y="176">3 · the reasoning behind replies</text>
+        <text class="s" x="349" y="262">tone alone sounds like you</text>
+        <text class="s" x="349" y="282">but doesn’t think like you</text>
+      </g>
+      <g class="sg" data-sp="3">
+        <rect class="cd" x="650" y="0" width="290" height="310" rx="12"/>
+        <text class="ma" x="674" y="36">LONGER WRITING</text>
+        <text class="t" x="674" y="78">Both ends of the work</text>
+        <text class="t3" x="674" y="120">the notes you started from</text>
+        <text class="t3" x="674" y="148">+ the piece you wrote</text>
+        <text class="t3" x="674" y="190">what you keep · what you cut</text>
+        <text class="t3" x="674" y="218">what goes first</text>
+        <text class="s" x="674" y="282">style and thinking</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== 6 · Deck prompt ===== -->
+<section class="sl" data-ch="2">
+  <div class="head">
+    <div class="kk"><svg><use href="#bench"/></svg>The look · attach your best deck</div>
+    <div class="rule"></div>
+    <h1>Pixel for pixel.</h1>
+  </div>
+  <div class="body">
+    <div class="ppw n">
+      <div class="tag">Say this</div>
+      <div class="pp big">
+        <svg class="crn" viewBox="0 0 52 52"><path d="M52,14 A14,14 0 0 1 38,0"/><path d="M52,27 A27,27 0 0 1 25,0"/><path d="M52,40 A40,40 0 0 1 12,0"/></svg>
+        <p><span class="hl">Methodically reverse engineer the design of this deck, pixel for pixel:</span> fonts, colors, spacing, and the layout of each type of slide.</p>
+        <p>Then build a skill that makes every new deck look exactly like this one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7 · Board update prompt ===== -->
+<section class="sl" data-ch="2">
+  <div class="head">
+    <div class="kk"><svg><use href="#bench"/></svg>Longer writing · attach both ends</div>
+    <div class="rule"></div>
+    <h1>Let it work out how you do it.</h1>
+  </div>
+  <div class="body">
+    <div class="ppw">
+      <div class="tag">Say this</div>
+      <div class="pp sm">
+        <svg class="crn" viewBox="0 0 52 52"><path d="M52,14 A14,14 0 0 1 38,0"/><path d="M52,27 A27,27 0 0 1 25,0"/><path d="M52,40 A40,40 0 0 1 12,0"/></svg>
+        <p>Here are my last four <span class="var">board updates</span>, and <span class="hl">the notes and numbers each one was written from.</span> Reverse engineer how I do this so you can do it the same way: my writing style and tone, how I structure it, and <span class="hl">how I decide what to keep, what to cut, and what goes first.</span></p>
+        <p>Work out as much as you can from the examples. <span class="hl">Only ask me about what you can’t tell from them,</span> one question at a time, and no more than five questions.</p>
+        <p>Then build a skill that works for any future update, not just these four.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 8 · Checking skill prompt ===== -->
+<section class="sl" data-ch="2">
+  <div class="head">
+    <div class="kk"><svg><use href="#bench"/></svg>Same examples · a checking skill</div>
+    <div class="rule"></div>
+    <h1>Now make one that checks.</h1>
+  </div>
+  <div class="body">
+    <div class="ppw n">
+      <div class="tag">Say this</div>
+      <div class="pp big">
+        <svg class="crn" viewBox="0 0 52 52"><path d="M52,14 A14,14 0 0 1 38,0"/><path d="M52,27 A27,27 0 0 1 25,0"/><path d="M52,40 A40,40 0 0 1 12,0"/></svg>
+        <p>Using what you learned from my <span class="var">board updates</span>, <span class="hl">build a separate checking skill.</span></p>
+        <p>It should review a draft update, <span class="hl">written by me or anyone on my team,</span> and list every place it doesn’t match how I’d do it, with a suggested fix.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 9 · Do it once, then save ===== -->
+<section class="sl" data-ch="3">
+  <div class="head">
+    <div class="kk"><svg><use href="#bench"/></svg>Your steps · mostly process</div>
+    <div class="rule"></div>
+    <h1>Build from proof, not from memory.</h1>
+  </div>
+  <div class="body top">
+    <svg class="fig" viewBox="0 0 940 330" width="940" height="330">
+      <rect class="cd" x="0" y="20" width="200" height="110" rx="12"/>
+      <text class="m" x="22" y="52">STEP 1</text>
+      <text class="t" x="22" y="86">Do the task</text>
+      <text class="t3" x="22" y="112">with AI, on a real example</text>
+      <line class="ln" x1="206" y1="75" x2="252" y2="75" marker-end="url(#mDm)"/>
+      <rect class="cd" x="258" y="20" width="200" height="110" rx="12"/>
+      <text class="m" x="280" y="52">STEP 2</text>
+      <text class="t" x="280" y="86">Correct it</text>
+      <text class="t3" x="280" y="112">until you’d actually send it</text>
+      <line class="la" x1="464" y1="75" x2="510" y2="75" marker-end="url(#mAc)"/>
+      <rect class="fc glow" x="516" y="20" width="220" height="110" rx="12"/>
+      <text class="ma" x="538" y="52">STEP 3</text>
+      <text class="t" x="538" y="86">Save it as a skill</text>
+      <text class="t3" x="538" y="112">“turn what we just did…”</text>
+      <rect class="gh" x="0" y="180" width="736" height="130" rx="12"/>
+      <text class="m" x="24" y="214">MOSTLY CLICKING BETWEEN APPS?  RECORD IT INSTEAD</text>
+      <text class="t2" x="24" y="250">Claude: Record a skill   ·   ChatGPT: Record &amp; Replay</text>
+      <text class="s" x="24" y="286">Mac only for now, not on every plan · it sees what you did, not why</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== 10 · Save prompt ===== -->
+<section class="sl" data-ch="3">
+  <div class="head">
+    <div class="kk"><svg><use href="#bench"/></svg>At the end of the chat</div>
+    <div class="rule"></div>
+    <h1>Turn what you just did into a skill.</h1>
+  </div>
+  <div class="body">
+    <div class="ppw n">
+      <div class="tag">Say this</div>
+      <div class="pp big">
+        <svg class="crn" viewBox="0 0 52 52"><path d="M52,14 A14,14 0 0 1 38,0"/><path d="M52,27 A27,27 0 0 1 25,0"/><path d="M52,40 A40,40 0 0 1 12,0"/></svg>
+        <p>Turn what we just did into a skill. Include <span class="hl">the steps, the fixes I made along the way,</span> and what the finished result should look like.</p>
+        <p><span class="hl">Keep it general so it works on next month’s file,</span> not just this one. Every line should earn its place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 11 · The interview ===== -->
+<section class="sl" data-ch="4">
+  <div class="head">
+    <div class="kk"><svg><use href="#bench"/></svg>Your head · almost all judgment</div>
+    <div class="rule"></div>
+    <h1>It knows your field. It doesn’t know you.</h1>
+  </div>
+  <div class="body top">
+    <svg class="fig" viewBox="0 0 940 330" width="940" height="330">
+      <rect class="cd" x="0" y="0" width="290" height="140" rx="12"/>
+      <text class="m" x="24" y="34">ALREADY KNOWS</text>
+      <text class="t" x="24" y="76">Your industry</text>
+      <text class="t" x="24" y="104">Your kind of role</text>
+      <rect class="gh" x="0" y="170" width="290" height="140" rx="12"/>
+      <text class="m" x="24" y="204">DOESN’T KNOW</text>
+      <text class="i2" x="24" y="244">Your preferences · your company</text>
+      <text class="i2" x="24" y="272">How you think about this task</text>
+      <line class="la" x1="298" y1="240" x2="360" y2="160" marker-end="url(#mAc)"/>
+      <rect class="fc glow" x="370" y="60" width="290" height="190" rx="12"/>
+      <text class="ma" x="394" y="96">THE INTERVIEW FILLS THE GAP</text>
+      <text class="t" x="394" y="138">One question at a time</text>
+      <text class="t2" x="394" y="170">each answer shapes the next</text>
+      <text class="t2" x="394" y="210">talk your answers, don’t type</text>
+      <rect class="cd" x="690" y="30" width="250" height="110" rx="12"/>
+      <text class="m" x="712" y="62">QUESTIONS</text>
+      <text class="t" x="712" y="100">8 to 15</text>
+      <text class="s" x="712" y="124">never more than 15</text>
+      <rect class="cd" x="690" y="170" width="250" height="110" rx="12"/>
+      <text class="m" x="712" y="202">YOUR TIME</text>
+      <text class="t" x="712" y="240">15 to 20 minutes</text>
+      <text class="s" x="712" y="264">to answer them well</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== 12 · Interview prompt ===== -->
+<section class="sl" data-ch="4">
+  <div class="head">
+    <div class="kk"><svg><use href="#bench"/></svg>Swap in your own task</div>
+    <div class="rule"></div>
+    <h1>Let it interview you.</h1>
+  </div>
+  <div class="body">
+    <div class="ppw">
+      <div class="tag">Say this</div>
+      <div class="pp mid">
+        <svg class="crn" viewBox="0 0 52 52"><path d="M52,14 A14,14 0 0 1 38,0"/><path d="M52,27 A27,27 0 0 1 25,0"/><path d="M52,40 A40,40 0 0 1 12,0"/></svg>
+        <p>I want to build a skill for how I <span class="var">review a proposal from a vendor</span>. Interview me to learn how I think about it. <span class="hl">Ask one question at a time, and let each answer shape your next question.</span></p>
+        <p>Focus on my judgment: <span class="hl">what I look at first, what good looks like to me, and what a smart new hire would most likely get wrong.</span></p>
+        <p>Stop at 15 questions, or sooner if you have what you need. Then build the skill from what you learned.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 13 · Mixing steps and judgment ===== -->
+<section class="sl" data-ch="4" data-kind="spot">
+  <div class="head">
+    <div class="kk"><svg><use href="#bench"/></svg>Most real work is a mix</div>
+    <div class="rule"></div>
+    <h1>Steps and judgment: pick the order.</h1>
+  </div>
+  <div class="body top">
+    <svg class="fig" viewBox="0 0 940 280" width="940" height="280">
+      <g class="sg" data-sp="1">
+        <rect class="cd" x="0" y="0" width="440" height="250" rx="12"/>
+        <text class="ma" x="28" y="38">MOSTLY JUDGMENT</text>
+        <text class="t" x="28" y="96">1 · The interview</text>
+        <text class="t" x="28" y="136">2 · Then a real example</text>
+      </g>
+      <g class="sg" data-sp="2">
+        <rect class="cd" x="500" y="0" width="440" height="250" rx="12"/>
+        <text class="ma" x="528" y="38">MOSTLY STEPS</text>
+        <text class="t" x="528" y="96">1 · Do the work first</text>
+        <text class="t" x="528" y="136">2 · Then it interviews you</text>
+        <text class="t3" x="528" y="166">about the choices you made</text>
+      </g>
+      <text class="s2" x="470" y="276" text-anchor="middle">Either order works. The skill needs both.</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== 14 · Why convert ===== -->
+<section class="sl" data-ch="5" data-kind="spot">
+  <div class="head">
+    <div class="kk"><svg><use href="#bench"/></svg>A custom GPT · a project · a Gem · an SOP</div>
+    <div class="rule"></div>
+    <h1>Four reasons to convert it.</h1>
+  </div>
+  <div class="body top">
+    <svg class="fig" viewBox="0 0 940 330" width="940" height="330">
+      <g class="sg" data-sp="1">
+        <rect class="cd" x="0" y="0" width="440" height="145" rx="12"/>
+        <text class="ma" x="26" y="34">THE TOOLS ARE MOVING</text>
+        <text class="t" x="26" y="76">Custom GPTs retire in December</text>
+        <text class="t" x="26" y="104">Gems become skills Nov 17</text>
+        <text class="s" x="26" y="130">convert on your terms, and clean it up</text>
+      </g>
+      <g class="sg" data-sp="2">
+        <rect class="cd" x="500" y="0" width="440" height="145" rx="12"/>
+        <text class="ma" x="526" y="34">IT GOES WHERE YOU GO</text>
+        <text class="t" x="526" y="76">Call it from any chat</text>
+        <text class="t2" x="526" y="104">not just inside one project</text>
+      </g>
+      <g class="sg" data-sp="3">
+        <rect class="cd" x="0" y="175" width="440" height="145" rx="12"/>
+        <text class="ma" x="26" y="209">IT’S LIGHTER</text>
+        <text class="t" x="26" y="251">The AI sees a name + a short</text>
+        <text class="t" x="26" y="279">description until it’s needed</text>
+        <text class="s" x="26" y="305">more room to think about the work</text>
+      </g>
+      <g class="sg" data-sp="4">
+        <rect class="cd" x="500" y="175" width="440" height="145" rx="12"/>
+        <text class="ma" x="526" y="209">IT SHOWS UP IN MORE PLACES</text>
+        <text class="t" x="526" y="251">Excel · PowerPoint · Word · Outlook</text>
+        <text class="t2" x="526" y="279">Claude uses your skills there</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== 15 · Convert prompt ===== -->
+<section class="sl" data-ch="5">
+  <div class="head">
+    <div class="kk"><svg><use href="#bench"/></svg>Paste in the old instructions and files</div>
+    <div class="rule"></div>
+    <h1>Convert it, and clean house.</h1>
+  </div>
+  <div class="body">
+    <div class="ppw">
+      <div class="tag">Say this</div>
+      <div class="pp mid">
+        <svg class="crn" viewBox="0 0 52 52"><path d="M52,14 A14,14 0 0 1 38,0"/><path d="M52,27 A27,27 0 0 1 25,0"/><path d="M52,40 A40,40 0 0 1 12,0"/></svg>
+        <p>Here are the instructions and files from my <span class="var">proposal GPT</span>. Turn them into a skill that does the same job.</p>
+        <p><span class="hl">Cut every line that doesn’t change the result.</span> <span class="hl">Remove anything that only made sense for one client or one file,</span> so the skill works for any future job.</p>
+        <p>When you’re done, <span class="hl">show me what you removed.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 16 · Rules for every skill ===== -->
+<section class="sl" data-ch="6" data-kind="recap">
+  <div class="head">
+    <div class="kk"><svg><use href="#bench"/></svg>No matter how you build it</div>
+    <div class="rule"></div>
+    <h1>Rules for every skill</h1>
+  </div>
+  <div class="body">
+    <div class="rc" style="gap:22px">
+      <div class="rr"><i>01</i><b>Keep it lean. Every line earns its place.</b></div>
+      <div class="rr"><i>02</i><b>Make it work for the next job, not just this one.</b></div>
+      <div class="rr"><i>03</i><b>Test it on a real task it hasn’t seen.</b></div>
+      <div class="rr"><i>04</i><b>Few skills, with names that sound different.</b></div>
+      <div class="rr"><i>05</i><b>If others use it, it asks. It never guesses.</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 17 · The picker ===== -->
+<section class="sl" data-ch="7" data-kind="recap">
+  <div class="head">
+    <div class="kk"><svg><use href="#bench"/></svg>Where does the know-how live?</div>
+    <div class="rule"></div>
+    <h1>Recap</h1>
+  </div>
+  <div class="body">
+    <div class="rc" style="gap:22px">
+      <div class="rr"><i>01</i><b>In finished work → reverse engineer it.</b></div>
+      <div class="rr"><i>02</i><b>In your steps → do it once, then save it.</b></div>
+      <div class="rr"><i>03</i><b>In your head → let the AI interview you.</b></div>
+      <div class="rr"><i>04</i><b>In something you built → convert it.</b></div>
+      <div class="rr"><i>05</i><b>Then ask: does it do the work, or check it?</b></div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+/* ---------- chapters ---------- */
+const CH=[
+  {l:"Why it matters",ac:"#F2A25E",r:"242,162,94"},
+  {l:"Do or check",ac:"#E8654A",r:"232,101,74"},
+  {l:"Finished work",ac:"#DBAA4E",r:"219,170,78"},
+  {l:"Your steps",ac:"#58C7A0",r:"88,199,160"},
+  {l:"Your head",ac:"#83AEEC",r:"131,174,236"},
+  {l:"Your old setup",ac:"#B09CEF",r:"176,156,239"},
+  {l:"Every skill",ac:"#5EC5CC",r:"94,197,204"},
+  {l:"Recap",ac:"#E7E2D4",r:"231,226,212"}
+];
+
+/* ---------- engine ---------- */
+const slides=[...document.querySelectorAll(".sl")];
+const nav=document.getElementById("nav");
+const ctr=document.getElementById("ctr");
+const stepsEl=document.getElementById("steps");
+const meta=slides.map(s=>{
+  const kind=s.dataset.kind||"";
+  let steps=0;
+  if(kind==="spot"){steps=new Set([...s.querySelectorAll("[data-sp]")].map(e=>e.dataset.sp)).size;}
+  if(kind==="recap"){steps=s.querySelectorAll(".rr").length;}
+  const entry=s.dataset.entry!=null?+s.dataset.entry:(steps?1:0);
+  return {ch:+s.dataset.ch,kind,steps,entry};
+});
+CH.forEach((c,i)=>{
+  const d=document.createElement("div");d.className="nv";d.style.setProperty("--cac",c.ac);
+  d.innerHTML=`<svg viewBox="0 0 14 14"><use href="#bench"/></svg><span>${c.l}</span>`;
+  d.addEventListener("click",()=>{const idx=meta.findIndex(m=>m.ch===i);if(idx>=0)go(idx,meta[idx].entry);});
+  nav.appendChild(d);
+});
+let cur=0,step=0;
+function pad(n){return String(n).padStart(2,"0");}
+function render(){
+  const m=meta[cur],c=CH[m.ch];
+  document.documentElement.style.setProperty("--ac",c.ac);
+  document.documentElement.style.setProperty("--acr",c.r);
+  slides.forEach((s,i)=>{
+    if(i===cur){if(!s.classList.contains("on")){s.classList.add("on");requestAnimationFrame(()=>requestAnimationFrame(()=>s.classList.add("vis")));}}
+    else{s.classList.remove("on","vis");}
+  });
+  const s=slides[cur];
+  if(m.kind==="spot"){
+    s.classList.toggle("lit",step>=1);
+    s.querySelectorAll("[data-sp]").forEach(e=>{e.classList.toggle("curr",+e.dataset.sp===step);e.classList.toggle("done",+e.dataset.sp<step);});
+  }
+  if(m.kind==="recap"){
+    s.querySelectorAll(".rr").forEach((r,i)=>{r.classList.toggle("cur",i+1===step);r.classList.toggle("done",i+1<step);});
+  }
+  [...nav.children].forEach((d,i)=>{d.classList.toggle("cur",i===m.ch);d.classList.toggle("done",i<m.ch);});
+  ctr.innerHTML=`<b>${pad(cur+1)}</b> / ${pad(slides.length)}`;
+  stepsEl.innerHTML=m.steps?Array.from({length:m.steps},(_,i)=>`<i class="${i<step?"on":""}"></i>`).join(""):"";
+  document.body.dataset.state=`${cur}:${step}`;
+}
+function go(i,st){cur=Math.max(0,Math.min(slides.length-1,i));step=st;render();}
+function next(){const m=meta[cur];if(step<m.steps)go(cur,step+1);else if(cur<slides.length-1)go(cur+1,meta[cur+1].entry);}
+function prev(){const m=meta[cur];if(step>m.entry)go(cur,step-1);else if(cur>0)go(cur-1,meta[cur-1].steps);}
+document.addEventListener("keydown",e=>{
+  if(["ArrowRight"," ","PageDown"].includes(e.key)){e.preventDefault();next();}
+  else if(["ArrowLeft","PageUp"].includes(e.key)){e.preventDefault();prev();}
+  else if(e.key==="Home"){e.preventDefault();go(0,meta[0].entry);}
+  else if(e.key==="End"){e.preventDefault();go(slides.length-1,meta[slides.length-1].steps);}
+  else if(e.key==="f"||e.key==="F"){if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen();}
+});
+function fit(){
+  const k=Math.min(innerWidth/1280,innerHeight/720);
+  document.getElementById("stage").style.transform=`scale(${k})`;
+  requestAnimationFrame(()=>{document.querySelectorAll(".fig").forEach(f=>{const d=f.style.display;f.style.display="none";void f.getBoundingClientRect();f.style.display=d;});});
+}
+addEventListener("resize",fit);
+fit();go(0,meta[0].entry);
+window.DECK={meta,go};
+/* open a given slide with #N (1-based), fully revealed */
+(function(){const h=parseInt(location.hash.slice(1));if(h>0&&h<=slides.length)go(h-1,meta[h-1].steps);})();
+</script>
+</body>
+</html>
